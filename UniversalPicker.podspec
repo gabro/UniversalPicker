@@ -12,6 +12,9 @@ Pod::Spec.new do |s|
   s.summary          = "A hassle-free asset picker for photos, videos and files"
 
   s.description      = <<-DESC
+                       A hassle-free asset picker for photos, videos and files
+                       In case of photo/videos, it automatically prompts for camera/library choice
+                       In case of document, allows selecting from any file provider
                        DESC
 
   s.homepage         = "https://github.com/gabro/UniversalPicker"

@@ -33,13 +33,23 @@
                                     <action selector="pickPhoto" destination="vXZ-lx-hvc" eventType="touchUpInside" id="csU-Ds-uts"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfU-e1-HoF">
+                                <rect key="frame" x="268" y="323" width="66" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Pick a file"/>
+                                <connections>
+                                    <action selector="pickFile" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hqv-ja-BED"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lfU-e1-HoF" firstAttribute="top" secondItem="8hQ-i1-O0E" secondAttribute="bottom" constant="8" id="A4c-0z-IuB"/>
                             <constraint firstItem="8hQ-i1-O0E" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="QCH-hc-ixO"/>
                             <constraint firstItem="8hQ-i1-O0E" firstAttribute="top" secondItem="VEE-aI-3vP" secondAttribute="bottom" constant="8" id="TTM-6i-EGq"/>
                             <constraint firstItem="VEE-aI-3vP" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="skA-a3-8Sd"/>
+                            <constraint firstItem="lfU-e1-HoF" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="soJ-JT-8D5"/>
                             <constraint firstItem="8hQ-i1-O0E" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="tGe-zw-oL5"/>
                         </constraints>
                     </view>
