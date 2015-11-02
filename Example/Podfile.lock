@@ -1,0 +1,14 @@
+PODS:
+  - UniversalPicker (0.1.0)
+
+DEPENDENCIES:
+  - UniversalPicker (from `../`)
+
+EXTERNAL SOURCES:
+  UniversalPicker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  UniversalPicker: 28bf3714b33ff37e637fae73569e3ac9eb3af516
+
+COCOAPODS: 0.39.0

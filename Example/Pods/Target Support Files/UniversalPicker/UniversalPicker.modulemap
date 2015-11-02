@@ -1,0 +1,6 @@
+framework module UniversalPicker {
+  umbrella header "UniversalPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
