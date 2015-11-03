@@ -1,6 +1,5 @@
 # UniversalPicker
 
-[![CI Status](http://img.shields.io/travis/Gabriele Petronella/UniversalPicker.svg?style=flat)](https://travis-ci.org/Gabriele Petronella/UniversalPicker)
 [![Version](https://img.shields.io/cocoapods/v/UniversalPicker.svg?style=flat)](http://cocoapods.org/pods/UniversalPicker)
 [![License](https://img.shields.io/cocoapods/l/UniversalPicker.svg?style=flat)](http://cocoapods.org/pods/UniversalPicker)
 [![Platform](https://img.shields.io/cocoapods/p/UniversalPicker.svg?style=flat)](http://cocoapods.org/pods/UniversalPicker)
