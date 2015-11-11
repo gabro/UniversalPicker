@@ -18,7 +18,7 @@ public class UniversalPicker {
     InternalUniversalPicker.sharedInstance.pickVideo(inViewController: vc, sourceView: sourceView, buttonItem: buttonItem, completionHandler: completionHandler)
   }
 
-  public class func pickFile(inViewController vc: UIViewController, completionHandler: NSURL? -> Void) {
+  public class func pickFile(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: NSURL? -> Void) {
     InternalUniversalPicker.sharedInstance.pickFile(inViewController: vc, completionHandler: completionHandler)
   }
 }
