@@ -19,7 +19,7 @@ public class UniversalPicker {
   }
 
   public class func pickFile(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: NSURL? -> Void) {
-    InternalUniversalPicker.sharedInstance.pickFile(inViewController: vc, completionHandler: completionHandler)
+    InternalUniversalPicker.sharedInstance.pickFile(inViewController: vc, sourceView: sourceView, buttonItem: buttonItem, completionHandler: completionHandler)
   }
 }
 
