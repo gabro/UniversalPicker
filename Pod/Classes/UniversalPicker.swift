@@ -137,11 +137,22 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
     vc.presentViewController(alert, animated: true, completion: nil)
   }
   
-  func pickFile(inViewController vc: UIViewController, completionHandler: NSURL? -> Void) {
+  func pickFile(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: NSURL? -> Void) {
     self.viewController = vc
     self.pickFileCompletionHandler = completionHandler
     let documentMenuVC = UIDocumentMenuViewController(documentTypes: [String(kUTTypeContent)], inMode: .Import)
     documentMenuVC.delegate = self
+
+    if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+      assert(sourceView != nil || buttonItem != nil,
+          "You must provide either sourceView or buttonItem to \(__FUNCTION__) when on an iPad")
+      documentMenuVC.popoverPresentationController?.sourceView = sourceView
+      documentMenuVC.popoverPresentationController?.barButtonItem = buttonItem
+      if let sourceView = sourceView {
+        documentMenuVC.popoverPresentationController?.sourceRect = sourceView.bounds
+      }
+    }
+    
     vc.presentViewController(documentMenuVC, animated: true, completion: nil)
   }
   
