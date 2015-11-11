@@ -34,8 +34,8 @@ class ViewController: UIViewController {
   }
 
   @IBAction func pickVideo() {
-    UniversalPicker.pickVideo(inViewController: self) { video in
-      if let _ = video {
+    UniversalPicker.pickVideo(inViewController: self) { videoURL in
+      if let _ = videoURL {
         dispatch_async(dispatch_get_main_queue()) {
           let alert = UIAlertController(title: "Success!", message: "You picked a video", preferredStyle: .Alert)
           alert.addAction(UIAlertAction(title: "Not impressed", style: .Default, handler: nil))
@@ -45,4 +45,15 @@ class ViewController: UIViewController {
     }
   }
 
+  @IBAction func pickFile() {
+    UniversalPicker.pickFile(inViewController: self) { fileURL in
+      if let _ = fileURL {
+        dispatch_async(dispatch_get_main_queue()) {
+          let alert = UIAlertController(title: "Success!", message: "You picked a file", preferredStyle: .Alert)
+          alert.addAction(UIAlertAction(title: "Not impressed", style: .Default, handler: nil))
+          self.presentViewController(alert, animated: true, completion: nil)
+        }
+      }
+    }
+  }
 }
