@@ -10,15 +10,15 @@ import Photos
 import MobileCoreServices
 
 public class UniversalPicker {
-  public class func pickPhoto(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: (UIImage?) -> Void) {
+  public class func pickPhoto(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: @escaping (UIImage?) -> Void) {
     InternalUniversalPicker.sharedInstance.pickPhoto(inViewController: vc, sourceView: sourceView, buttonItem: buttonItem, completionHandler: completionHandler)
   }
 
-  public class func pickVideo(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: (URL?) -> Void) {
+  public class func pickVideo(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: @escaping (URL?) -> Void) {
     InternalUniversalPicker.sharedInstance.pickVideo(inViewController: vc, sourceView: sourceView, buttonItem: buttonItem, completionHandler: completionHandler)
   }
 
-  public class func pickFile(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: (URL?) -> Void) {
+  public class func pickFile(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: @escaping (URL?) -> Void) {
     InternalUniversalPicker.sharedInstance.pickFile(inViewController: vc, sourceView: sourceView, buttonItem: buttonItem, completionHandler: completionHandler)
   }
 }
@@ -93,7 +93,7 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
   
   private var viewController: UIViewController?
   
-  func pickPhoto(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: (UIImage?) -> Void) {
+  func pickPhoto(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: @escaping (UIImage?) -> Void) {
     self.pickSinglePhotoCompletionHandler = completionHandler
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -102,7 +102,7 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
     alert.addAction(chooseSinglePhotoFromLibraryAction(vc))
     alert.addAction(cancelAction)
     
-    if UIDevice.current().userInterfaceIdiom == .pad {
+    if UIDevice.current.userInterfaceIdiom == .pad {
       assert(sourceView != nil || buttonItem != nil,
         "You must provide either sourceView or buttonItem to \(#function) when on an iPad")
       alert.popoverPresentationController?.sourceView = sourceView
@@ -115,7 +115,7 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
     vc.present(alert, animated: true, completion: nil)
   }
   
-  func pickVideo(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: (URL?) -> Void) {
+  func pickVideo(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: @escaping (URL?) -> Void) {
     self.pickSingleVideoCompletionHandler = completionHandler
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -124,7 +124,7 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
     alert.addAction(chooseSingleVideoFromLibraryAction(vc))
     alert.addAction(cancelAction)
     
-    if UIDevice.current().userInterfaceIdiom == .pad {
+    if UIDevice.current.userInterfaceIdiom == .pad {
       assert(sourceView != nil || buttonItem != nil,
         "You must provide either sourceView or buttonItem to \(#function) when on an iPad")
       alert.popoverPresentationController?.sourceView = sourceView
@@ -137,13 +137,13 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
     vc.present(alert, animated: true, completion: nil)
   }
   
-  func pickFile(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: (URL?) -> Void) {
+  func pickFile(inViewController vc: UIViewController, sourceView: UIView? = nil, buttonItem: UIBarButtonItem? = nil, completionHandler: @escaping (URL?) -> Void) {
     self.viewController = vc
     self.pickFileCompletionHandler = completionHandler
     let documentMenuVC = UIDocumentMenuViewController(documentTypes: [String(kUTTypeContent)], in: .import)
     documentMenuVC.delegate = self
 
-    if UIDevice.current().userInterfaceIdiom == .pad {
+    if UIDevice.current.userInterfaceIdiom == .pad {
       assert(sourceView != nil || buttonItem != nil,
           "You must provide either sourceView or buttonItem to \(#function) when on an iPad")
       documentMenuVC.popoverPresentationController?.sourceView = sourceView
@@ -158,7 +158,7 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
   
   //MARK: UIImagePickerControllerDelegate
   
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+  private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     let mediaType = info[UIImagePickerControllerMediaType] as! NSString
     if mediaType == kUTTypeMovie {
       let videoURL = info[UIImagePickerControllerMediaURL] as! URL
@@ -191,6 +191,7 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
   
   // MARK: UIDocumentPickerDelegate
   
+
   func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
     pickFileCompletionHandler?(url)
   }

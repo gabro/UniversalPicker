@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "UniversalPicker"
-  s.version          = "1.0.0"
+  s.version          = "2.0.0"
   s.summary          = "A hassle-free asset picker for photos, videos and files"
 
   s.description      = <<-DESC
