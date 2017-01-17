@@ -158,7 +158,7 @@ class InternalUniversalPicker: NSObject, UIImagePickerControllerDelegate, UINavi
   
   //MARK: UIImagePickerControllerDelegate
   
-  private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     let mediaType = info[UIImagePickerControllerMediaType] as! NSString
     if mediaType == kUTTypeMovie {
       let videoURL = info[UIImagePickerControllerMediaURL] as! URL
